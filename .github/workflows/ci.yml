@@ -1,0 +1,21 @@
+name: ISP Pipeline CI
+on: [push, pull_request]
+jobs:
+  build-native:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install deps
+        run: sudo apt-get install -y cmake libgtest-dev
+      - name: Build SIL mode
+        run: cmake -B build -DSIL_MODE=ON && cmake --build build
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure
+  build-arm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install ARM toolchain
+        run: sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu qemu-user-static
+      - name: Cross-compile
+        run: cmake -B build-arm -DCMAKE_TOOLCHAIN_FILE=cmake/aarch64-toolchain.cmake && cmake --build build-arm
