@@ -10,7 +10,7 @@ The pipeline converts raw Bayer sensor data into a fully processed image through
 
 Automotive camera systems run ISP pipelines on resource-constrained ECUs that forbid dynamic memory allocation, floating-point operations, and exceptions. This project implements those same constraints in software, making it possible to develop, validate, and unit-test the pipeline without physical hardware — a methodology called Software-in-the-Loop (SIL), defined in ISO 26262 Part 4.
 
-The codebase is analysed automatically by [EmbedSentinel](https://github.com/yourname/embedsentinel), a multi-agent AI system that checks MISRA compliance, classifies ISO 26262 ASIL levels, and generates a requirements traceability matrix.
+The codebase is analysed automatically by [embedded-sentinel](https://github.com/UtharaKeerthan/embedded-sentinel), a multi-agent AI system that checks MISRA compliance, classifies ISO 26262 ASIL levels, and generates a requirements traceability matrix.
 
 ---
 
