@@ -245,13 +245,6 @@ ctest --test-dir build --output-on-failure
 
 ---
 
-## Related projects
-
-- [oak-d-driver-monitor](https://github.com/yourname/oak-d-driver-monitor) — real-time driver drowsiness detection on OAK-D camera hardware
-- [embedsentinel](https://github.com/yourname/embedsentinel) — multi-agent AI system that analyses this codebase for MISRA compliance, safety issues, and traceability
-
----
-
 ## Target hardware
 
 Designed to simulate the ISP pipeline running on:
