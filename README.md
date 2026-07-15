@@ -4,7 +4,7 @@ A Software-in-the-Loop (SIL) Image Signal Processor pipeline written in C++, sim
 
 The pipeline converts raw Bayer sensor data into a fully processed image through a series of deterministic, MISRA C++-constrained stages — no hardware required. Cross-compilation for ARM and emulation via QEMU provide a complete embedded development workflow on a standard laptop.
 
----
+![embedded-isp-pipeline Architecture — 12-stage ISP pipeline](./embedded-isp-pipeline-architecture.svg
 
 ## Why this project exists
 
