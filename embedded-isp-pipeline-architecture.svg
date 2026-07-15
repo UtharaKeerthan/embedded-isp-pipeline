@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1150 854" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1150" height="854" fill="#ffffff"/>
+<text x="575.0" y="42" text-anchor="middle" font-size="26" font-weight="800" fill="#1a1a2e">embedded-isp-pipeline — Pipeline Stages</text>
+<text x="575.0" y="65" text-anchor="middle" font-size="14.5" font-style="italic" fill="#455a64">Raw Bayer Buffer → 12 deterministic, MISRA-constrained ISP stages → YUV Output Frame</text>
+<rect x="405.0" y="95" width="340" height="56" rx="12" fill="#dcedc8" stroke="#558b2f" stroke-width="2.6"/>
+<text x="575.0" y="128.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1a1a2e">Raw Bayer Buffer (.raw file)</text>
+<path id="p_in" d="M 575.0,151 L 210.0,190" fill="none" stroke="#607d8b" stroke-width="2.2" opacity="0.65"/>
+<circle r="5.5" fill="#558b2f"><animateMotion dur="1.6s" begin="0s" repeatCount="indefinite" rotate="auto"><mpath href="#p_in"/></animateMotion></circle>
+<polygon points="203.0,183 217.0,183 210.0,194.2" fill="#607d8b"/>
+<rect x="50.0" y="190" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="84.0" y="219.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">1</text>
+<text x="224.0" y="226.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Dead Pixel Correction</text>
+<text x="224.0" y="248.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">replace hot/dead pixels using 4-neighbour median</text>
+<rect x="415.0" y="190" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="449.0" y="219.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">2</text>
+<text x="589.0" y="226.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Demosaicing</text>
+<text x="589.0" y="248.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">Bayer RGGB → full RGB (bilinear interpolation)</text>
+<rect x="780.0" y="190" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="814.0" y="219.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">3</text>
+<text x="954.0" y="226.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">White Balance</text>
+<text x="954.0" y="248.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">per-channel gain correction (Gray World algorithm)</text>
+<rect x="780.0" y="320" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="814.0" y="349.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">4</text>
+<text x="954.0" y="356.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Color Correction Matrix</text>
+<text x="954.0" y="378.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">3×3 CCM in Q4.12 fixed-point</text>
+<rect x="415.0" y="320" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="449.0" y="349.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">5</text>
+<text x="589.0" y="356.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Noise Reduction</text>
+<text x="589.0" y="378.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">bilateral-style spatial filter</text>
+<rect x="50.0" y="320" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="84.0" y="349.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">6</text>
+<text x="224.0" y="356.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Gamma Correction</text>
+<text x="224.0" y="378.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">LUT-based power-law curve (no floating-point)</text>
+<rect x="50.0" y="450" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="84.0" y="479.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">7</text>
+<text x="224.0" y="486.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Histogram Equalization</text>
+<text x="224.0" y="508.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">CLAHE with configurable tile size</text>
+<rect x="415.0" y="450" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="449.0" y="479.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">8</text>
+<text x="589.0" y="486.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Sharpening</text>
+<text x="589.0" y="508.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">unsharp mask (Laplacian edge enhancement)</text>
+<rect x="780.0" y="450" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="814.0" y="479.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">9</text>
+<text x="954.0" y="486.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Edge Detection</text>
+<text x="954.0" y="508.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">Sobel gradient + Canny multi-stage detector</text>
+<rect x="780.0" y="580" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="814.0" y="609.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">10</text>
+<text x="954.0" y="616.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Geometric Processing</text>
+<text x="954.0" y="638.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">bilinear resize + lens distortion correction</text>
+<rect x="415.0" y="580" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="449.0" y="609.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">11</text>
+<text x="589.0" y="616.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Color Space Conversion</text>
+<text x="589.0" y="638.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">RGB → YUV (BT.709) or RGB → HSV</text>
+<rect x="50.0" y="580" width="320" height="84" rx="12" fill="#bbdefb" stroke="#1565c0" stroke-width="2.2"/>
+<text x="84.0" y="609.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1565c0">12</text>
+<text x="224.0" y="616.7" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#1a1a2e">Auto-Exposure</text>
+<text x="224.0" y="638.5" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10" font-weight="500" fill="#455a64">iterative brightness convergence controller</text>
+<path id="p_stage_1" d="M 370.0,232.0 L 415.0,232.0" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#1565c0"><animateMotion dur="1.5s" begin="0.15s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_1"/></animateMotion></circle>
+<polygon points="408.0,225.0 408.0,239.0 419.2,232.0" fill="#607d8b"/>
+<path id="p_stage_2" d="M 735.0,232.0 L 780.0,232.0" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#6a1b9a"><animateMotion dur="1.5s" begin="0.3s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_2"/></animateMotion></circle>
+<polygon points="773.0,225.0 773.0,239.0 784.2,232.0" fill="#607d8b"/>
+<path id="p_stage_3" d="M 940.0,274 L 940.0,320" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#ef6c00"><animateMotion dur="1.4s" begin="0.44999999999999996s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_3"/></animateMotion></circle>
+<polygon points="933.0,313 947.0,313 940.0,324.2" fill="#607d8b"/>
+<path id="p_stage_4" d="M 780.0,362.0 L 735.0,362.0" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#00838f"><animateMotion dur="1.5s" begin="0.6s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_4"/></animateMotion></circle>
+<polygon points="742.0,355.0 742.0,369.0 730.8,362.0" fill="#607d8b"/>
+<path id="p_stage_5" d="M 415.0,362.0 L 370.0,362.0" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#ad1457"><animateMotion dur="1.5s" begin="0.0s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_5"/></animateMotion></circle>
+<polygon points="377.0,355.0 377.0,369.0 365.8,362.0" fill="#607d8b"/>
+<path id="p_stage_6" d="M 210.0,404 L 210.0,450" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#2e7d32"><animateMotion dur="1.4s" begin="0.15s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_6"/></animateMotion></circle>
+<polygon points="203.0,443 217.0,443 210.0,454.2" fill="#607d8b"/>
+<path id="p_stage_7" d="M 370.0,492.0 L 415.0,492.0" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#1565c0"><animateMotion dur="1.5s" begin="0.3s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_7"/></animateMotion></circle>
+<polygon points="408.0,485.0 408.0,499.0 419.2,492.0" fill="#607d8b"/>
+<path id="p_stage_8" d="M 735.0,492.0 L 780.0,492.0" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#6a1b9a"><animateMotion dur="1.5s" begin="0.44999999999999996s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_8"/></animateMotion></circle>
+<polygon points="773.0,485.0 773.0,499.0 784.2,492.0" fill="#607d8b"/>
+<path id="p_stage_9" d="M 940.0,534 L 940.0,580" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#ef6c00"><animateMotion dur="1.4s" begin="0.6s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_9"/></animateMotion></circle>
+<polygon points="933.0,573 947.0,573 940.0,584.2" fill="#607d8b"/>
+<path id="p_stage_10" d="M 780.0,622.0 L 735.0,622.0" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#00838f"><animateMotion dur="1.5s" begin="0.0s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_10"/></animateMotion></circle>
+<polygon points="742.0,615.0 742.0,629.0 730.8,622.0" fill="#607d8b"/>
+<path id="p_stage_11" d="M 415.0,622.0 L 370.0,622.0" fill="none" stroke="#607d8b" stroke-width="2" opacity="0.65"/>
+<circle r="5.5" fill="#ad1457"><animateMotion dur="1.5s" begin="0.15s" repeatCount="indefinite" rotate="auto"><mpath href="#p_stage_11"/></animateMotion></circle>
+<polygon points="377.0,615.0 377.0,629.0 365.8,622.0" fill="#607d8b"/>
+<path id="p_out" d="M 210.0,664 L 575.0,734" fill="none" stroke="#607d8b" stroke-width="2.2" opacity="0.65"/>
+<circle r="5.5" fill="#558b2f"><animateMotion dur="1.6s" begin="0.3s" repeatCount="indefinite" rotate="auto"><mpath href="#p_out"/></animateMotion></circle>
+<polygon points="568.0,727 582.0,727 575.0,738.2" fill="#607d8b"/>
+<rect x="405.0" y="734" width="340" height="56" rx="12" fill="#dcedc8" stroke="#558b2f" stroke-width="2.6"/>
+<text x="575.0" y="767.2" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#1a1a2e">YUV Output Frame</text>
+<text x="575.0" y="850" text-anchor="middle" font-size="13" font-weight="700" fill="#455a64">No dynamic memory (static pool) · no floating-point (Q8.8 / Q4.12 fixed-point) · no exceptions · no recursion · -Wstack-usage=4096</text>
+</svg>
