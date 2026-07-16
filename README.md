@@ -1,6 +1,6 @@
 # embedded-isp-pipeline
 
-A Software-in-the-Loop (SIL) Image Signal Processor pipeline written in C++, simulating the camera processing stages that run inside automotive ECUs such as those powered by NXP i.MX8 and S32G.
+A Software-in-the-Loop (SIL) Image Signal Processor pipeline written in C++, simulating the camera processing stages.
 
 The pipeline converts raw Bayer sensor data into a fully processed image through a series of deterministic, MISRA C++-constrained stages — no hardware required. Cross-compilation for ARM and emulation via QEMU provide a complete embedded development workflow on a standard laptop.
 
@@ -11,53 +11,6 @@ The pipeline converts raw Bayer sensor data into a fully processed image through
 Automotive camera systems run ISP pipelines on resource-constrained ECUs that forbid dynamic memory allocation, floating-point operations, and exceptions. This project implements those same constraints in software, making it possible to develop, validate, and unit-test the pipeline without physical hardware — a methodology called Software-in-the-Loop (SIL), defined in ISO 26262 Part 4.
 
 The codebase is analysed automatically by [embedded-sentinel](https://github.com/UtharaKeerthan/embedded-sentinel), a multi-agent AI system that checks MISRA compliance, classifies ISO 26262 ASIL levels, and generates a requirements traceability matrix.
-
----
-
-## Pipeline stages
-
-```
-Raw Bayer Buffer (.raw file)
-         │
-         ▼
- 1. Dead Pixel Correction     replace hot/dead pixels using 4-neighbour median
-         │
-         ▼
- 2. Demosaicing                Bayer RGGB → full RGB (bilinear interpolation)
-         │
-         ▼
- 3. White Balance              per-channel gain correction (Gray World algorithm)
-         │
-         ▼
- 4. Color Correction Matrix    3×3 CCM in Q4.12 fixed-point
-         │
-         ▼
- 5. Noise Reduction            bilateral-style spatial filter
-         │
-         ▼
- 6. Gamma Correction           LUT-based power-law curve (no floating-point)
-         │
-         ▼
- 7. Histogram Equalization     CLAHE with configurable tile size
-         │
-         ▼
- 8. Sharpening                 unsharp mask (Laplacian edge enhancement)
-         │
-         ▼
- 9. Edge Detection             Sobel gradient + Canny multi-stage detector
-         │
-         ▼
-10. Geometric Processing       bilinear resize + lens distortion correction
-         │
-         ▼
-11. Color Space Conversion     RGB → YUV (BT.709) or RGB → HSV
-         │
-         ▼
-12. Auto-Exposure              iterative brightness convergence controller
-         │
-         ▼
-    YUV Output Frame
-```
 
 ---
 
